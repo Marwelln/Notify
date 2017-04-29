@@ -17,9 +17,10 @@ class Notify {
 
     /**
      * When javascript should autoclose the notification. 0 to disabled.
+     * In milliseconds.
      * @var int
      */
-    public $autocloseTimer = 10;
+    public $autocloseTimer = 4000;
 
     public function __construct(array $attributes = []) {
         $this->messages = $attributes['messages'] ?? [];
