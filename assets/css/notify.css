@@ -1,0 +1,26 @@
+#notify {
+    margin:0 0 10px 0;
+    transition:all 200ms;
+}
+
+#notify button .close { display:none; }
+
+#notify[data-javascript] {
+    bottom: 0;
+    position: fixed;
+    right:-460px;
+    z-index: 9999;
+    width:450px;
+    max-width: calc(100% - 20px);
+}
+#notify[data-javascript] button .close { display:block; }
+
+#notify[data-javascript].opening {
+    right:10px;
+}
+
+#notify[data-javascript].closed {
+    right:-460px;
+}
+
+#notifier-message > :last-child { margin-bottom: 0; }

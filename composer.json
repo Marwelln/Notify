@@ -1,0 +1,25 @@
+{
+    "name": "marwelln/notify",
+    "description": "Easily display notification in your web app. Laravel support is included.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Martin Martensson",
+            "email": "marwelln@redward.se"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4"
+    },
+    "suggests": {
+        "illuminate/session": "*",
+        "illuminate/support": "*",
+        "marwelln/basset": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Marwelln\\": "src/"
+        }
+    }
+}
