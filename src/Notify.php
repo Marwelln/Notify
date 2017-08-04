@@ -32,7 +32,7 @@ class Notify {
         $this->hasMessage = ! empty($attributes['messages']);
     }
 
-    public function flash($messages, str $status = null) {
+    public function flash($messages, string $status = null) {
         session()->flash('notify', ['messages' => (array) $messages, 'status' => $status]);
     }
 
