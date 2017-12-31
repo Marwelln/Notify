@@ -8,8 +8,8 @@ class Notify {
         this.status = status ? status : 'success';
     }
 
-    open() {
-        this.builder.message(this.message).status(this.status).build(document.querySelector('body > div.container'));
+    open(options) {
+        this.builder.message(this.message).status(this.status).build(document.querySelector('body > div.container'), options);
     }
 
     close() {

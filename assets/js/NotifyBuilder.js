@@ -25,6 +25,15 @@ class NotifyBuilder {
             this.closeButton.innerHTML = "<i class='fa fa-remove'></i>";
             this.notify.appendChild(this.closeButton);
         }
+
+        document.addEventListener('notification-open', function(e){
+            (new Notify(e.detail.message, e.detail.status)).open({ 
+                "beforeOpen": function(noter) { 
+                    if (e.detail.autoclose)
+                        noter.notify.dataset.notifyAutoclose = e.detail.autoclose; 
+                }
+            });
+        });
     }
 
     status(status) {
@@ -83,14 +92,14 @@ class NotifyBuilder {
         return this;
     }
 
-    build(container) {
+    build(container, options) {
         this.container = typeof container === 'object' ? container : document.querySelector(container ? container : '#wrapper');
 
         this.notify.id = 'notify';
         this.notify.classList.add('alert');
 
         this.statuses = ['success', 'info', 'danger', 'default'];
-        this.defaultStatusClass = this.statusClass = 'success';
+        this.defaultStatusClass = 'success';
 
         this.notify.appendChild(this.messageContainer);
 
@@ -106,7 +115,12 @@ class NotifyBuilder {
 
         this.container.insertBefore(this.notify, this.container.firstChild);
 
-        open();
+        // Run a custom function before we open the notification window.
+        if (typeof options.beforeOpen == 'function') {
+            options.beforeOpen(this);
+        }
+
+        this.open();
 
         this.autoclose();
 
